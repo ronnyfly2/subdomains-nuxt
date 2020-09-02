@@ -40,7 +40,7 @@ export default {
       //console.log('5', res._events);
       nameForApi = req.headers.host.split('.')[0];
 			let dataapp= { host: req.headers.host };
-			console.log('api',api.getLocals('callback', nameForApi, ()=>{}));
+			console.log('api',api.getLocals('https://api.kunners.com/api/products?', nameForApi, ()=>{}));
     }
     const { data } = await axios.get('https://api.kunners.com/api/products?')
     return { kunners: data.data, pagination: data.pagination, title: nameForApi, titleWeb:'Mariate'}

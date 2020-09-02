@@ -13,7 +13,7 @@ console.log('items')
 export default class Api {
   constructor() {
 		let config = (new Config());
-		axios.defaults.baseURL = config.global.API_URL;
+		// axios.defaults.baseURL = config.global.API_URL;
 		//-axios.defaults.withCredentials = false;
 		//this.getAxiosHeader(JSON.parse(localStorage.getItem('tkn')));
 		//axios.defaults.headers.common['Authorization'] = 'Bearer ' + JSON.parse(localStorage.getItem('tkn'));
@@ -41,8 +41,8 @@ export default class Api {
 		}
 	}
   get(service, callback, params, onError){
-		console.log('111',service, callback)
-    axios.get(service, {params}).then(res =>{
+		console.log('111',service, callback, params)
+    axios.get(service).then(res =>{
       callback(res);
     }).catch( (error) => {
 			onError(error);
