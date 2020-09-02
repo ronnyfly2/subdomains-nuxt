@@ -1,34 +1,51 @@
-<template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        subdomains
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+.container
+	div
+		Logo
+			h1.title subdomains
+		.links
+			a(
+				href="https://nuxtjs.org/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="button--green"
+			) Documentation
+			a(
+				href="https://github.com/nuxt/nuxt.js"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="button--grey"
+			) GitHub
 </template>
 
 <script>
-export default {}
+import axios from 'axios';
+export default {
+
+	async asyncData ({ req, res }) {
+    console.log('23', this)
+    let nameForApi;
+    if (process.server) {
+      console.log('1', req.headers.host);
+      console.log('2', req.headers.referer);
+      //-console.log('3', res);
+      console.log('4', process.server);
+      //console.log('5', res._events);
+      nameForApi = req.headers.host.split('.')[0];
+      let dataapp= { host: req.headers.host };
+    }
+    const { data } = await axios.get('https://api.kunners.com/api/products?')
+    return { kunners: data.data, pagination: data.pagination, title: nameForApi, titleWeb:'Mariate'}
+	},
+	created(){
+		this.getKunners();
+	},
+	methods:{
+		getKunners (){
+			console.log('kunners', this.kunners)
+		}
+	}
+}
 </script>
 
 <style>
