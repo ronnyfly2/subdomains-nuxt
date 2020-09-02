@@ -28,8 +28,8 @@ export default {
 			api : (new Init()),
 		}
 	},
-	async asyncData ({ req, res, env }) {
-		console.log('23', env, this)
+	async asyncData ({ req, res, env, $axios }) {
+		console.log('23', env, this, $axios)
 		let api = (new Init());
     let nameForApi;
     if (process.server) {
