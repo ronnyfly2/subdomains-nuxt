@@ -43,7 +43,7 @@ export default class Api {
   get(service, callback, params, onError){
 		console.log('111',service, callback, params)
     axios.get(callback).then(res =>{
-			console.log('data', res)
+			console.log('data 111', res.data.data)
       callback(res);
     }).catch( (error) => {
 			onError(error);
