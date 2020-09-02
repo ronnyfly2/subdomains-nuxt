@@ -56,7 +56,10 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
 		'@nuxtjs/pwa',
-  ],
+	],
+	pwa: {
+		icon: false
+	},
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
