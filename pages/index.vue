@@ -16,6 +16,7 @@
 				rel="noopener noreferrer"
 				class="button--grey"
 			) GitHub
+		span {{ title }}
 </template>
 
 <script>
